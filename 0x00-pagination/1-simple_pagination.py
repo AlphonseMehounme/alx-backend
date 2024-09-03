@@ -36,10 +36,8 @@ class Server:
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """Return dataset pages
         """
-        assert isinstance(page, int) and page > 0,
-        "Must be a non null and positive int"
-        assert isinstance(page_size, int) and page_size > 0,
-        "Must be a non null and positive int"
+        assert isinstance(page, int) and page > 0, "Must be a positive int"
+        assert isinstance(page_size, int) and page_size > 0, "Must be 0+ int"
         rang = index_range(page, page_size)
         self.dataset()
         return self.__dataset[slice(*rang)]
