@@ -14,7 +14,11 @@ class FIFOCache(BaseCaching):
         put new element in cache
         """
         if key is not None and item is not None:
-            if FIFOCache.MAX_ITEMS < len(self.cache_data):
+            self.cache_data.update({key: item})
+            if len(self.cache_data) > FIFOCache.MAX_ITEMS:
+                kd = list(self.cache_data.keys())[0]
+                print("DISCARD: ", kd)
+                del self.cache_data[kd]
 
     def get(self, key):
         """
