@@ -9,3 +9,12 @@ function setNewSchool (schoolName, value) {
   client.set(schoolName, value);
   redis.print('Done');
 }
+
+function displaySchoolValue(schoolName) {
+  console.log(client.get(schoolName));
+}
+
+
+displaySchoolValue('Holberton');
+setNewSchool('HolbertonSanFrancisco', '100');
+displaySchoolValue('HolbertonSanFrancisco');
